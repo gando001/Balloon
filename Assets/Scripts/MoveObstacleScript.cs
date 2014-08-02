@@ -5,28 +5,30 @@ public class MoveObstacleScript : MonoBehaviour {
 
 	public GameObject part;
 
-	private string name;
+	private string nme;
 	private Transform parent;
 
 	// Use this for initialization
 	void Start () 
 	{
 		// name this obstacle
-		name = "Obstacle-"+ConstantsScript.INDEX;
-		this.transform.name = name;
+		nme = "Obstacle-"+ConstantsScript.INDEX;
+		this.transform.name = nme;
 		ConstantsScript.INDEX += 1;
 
+		this.transform.parent = GameObject.Find("Foreground").transform;
+		
 		parent = GameObject.Find(name).transform;
 		generateParts();
 	}
 	
 	// generate the obstacle parts
 	void generateParts()
-	{
+	{	
 		// the index of the gap
-		int parts = 31;
-		int gap = Random.Range(1,parts);
-		int x = -15;
+		int parts = 27;
+		int gap = Random.Range(2,parts-1);
+		float x = this.transform.parent.position.x-1;
 		for (int i=0; i<parts; i++)
 		{
 			if (gap != i && gap != (i+1) && gap != (i-1))

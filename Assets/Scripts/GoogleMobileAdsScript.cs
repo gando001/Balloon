@@ -25,8 +25,6 @@ public class GoogleMobileAdsScript : MonoBehaviour
 
 		// Load a banner ad.
 		bannerView.LoadAd(createAdRequest());
-
-		HideBanner();
     }
 
     public void ShowBanner()
