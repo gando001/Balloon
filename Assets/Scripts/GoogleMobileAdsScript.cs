@@ -22,14 +22,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
 		
 		// Create a 320x50 banner at the bottom of the screen.
 		bannerView = new BannerView(adUnitId, AdSize.SmartBanner, AdPosition.Bottom);
-/*		// Register for ad events.
-		bannerView.AdLoaded += HandleAdLoaded;
-		bannerView.AdFailedToLoad += HandleAdFailedToLoad;
-		bannerView.AdOpened += HandleAdOpened;
-		bannerView.AdClosing += HandleAdClosing;
-		bannerView.AdClosed += HandleAdClosed;
-		bannerView.AdLeftApplication += HandleAdLeftApplication;
-		*/
+
 		// Load a banner ad.
 		bannerView.LoadAd(createAdRequest());
 
@@ -52,7 +45,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
     private AdRequest createAdRequest()
     {
         return new AdRequest.Builder()
-				//.AddTestDevice("FE28D26C6EC35DC2E2F340CE4ECE7165") // remove this for real ads
+				.AddTestDevice("FE28D26C6EC35DC2E2F340CE4ECE7165") // remove this for real ads
 				.AddKeyword("game")
                 .TagForChildDirectedTreatment(true)
                 .Build();
