@@ -11,7 +11,7 @@ public class BalloonScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (!ConstantsScript.GAMEOVER)
+		if (ConstantsScript.GAME_STARTED && !ConstantsScript.GAMEOVER)
 		{
 			if (ConstantsScript.REAL_DEVICE)
 			{
@@ -38,7 +38,11 @@ public class BalloonScript : MonoBehaviour {
 		{	
 			ConstantsScript.GAMEOVER = true;
 
-			// find all obstacles and stop them moving
+			// find all obstacles and there parts and stop them moving
+			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Obstacle_Group"))
+			{
+				obj.rigidbody2D.velocity = new Vector3(0,0,0);
+			}
 			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Obstacle_Part"))
 			{
 				obj.rigidbody2D.velocity = new Vector3(0,0,0);

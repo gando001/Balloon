@@ -70,9 +70,8 @@
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\ConstantsScript.cs" />
      <Compile Include="Assets\Scripts\GameScript.cs" />
-     <Compile Include="Assets\Scripts\GenerateObstaclesScript.cs" />
      <Compile Include="Assets\Scripts\GoogleMobileAdsScript.cs" />
-     <Compile Include="Assets\Scripts\MoveObstacleScript.cs" />
+     <Compile Include="Assets\Scripts\ObstacleScript.cs" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sw\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lv\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lo-rLA\auth_strings.xml" />
