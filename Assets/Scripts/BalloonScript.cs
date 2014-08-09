@@ -38,16 +38,6 @@ public class BalloonScript : MonoBehaviour {
 		{	
 			ConstantsScript.GAMEOVER = true;
 
-			// find all obstacles and there parts and stop them moving
-			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Obstacle_Group"))
-			{
-				obj.rigidbody2D.velocity = new Vector3(0,0,0);
-			}
-			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Obstacle_Part"))
-			{
-				obj.rigidbody2D.velocity = new Vector3(0,0,0);
-			}
-
 			// pop the balloon
 		}
 	}

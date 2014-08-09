@@ -4,6 +4,7 @@ using System.Collections;
 public class ObstacleScript : MonoBehaviour {
 
 	public GameObject part;
+	public Sprite part1, part2, part3;
 
 	private string nme;
 	private Transform parent;
@@ -51,20 +52,28 @@ public class ObstacleScript : MonoBehaviour {
 	void generateParts()
 	{	
 		// the index of the gap
-		int parts = 25;
-		int gap = Random.Range(2,parts-1);
-		float x = this.transform.parent.position.x;
-		for (int i=0; i<parts; i++)
+		int gap = Random.Range(2,ConstantsScript.OBSTACLE_PARTS-1);
+		float x = this.transform.parent.position.x+1;
+
+		for (int i=0; i<ConstantsScript.OBSTACLE_PARTS; i++)
 		{
-			if (gap != i && gap != (i+1) && gap != (i-1))
+			if (gap != i)// && gap != (i+1) && gap != (i-1))
 			{
 				// create each obstacle part
 				GameObject tmp = (GameObject)Instantiate(part, new Vector3(x,parent.transform.position.y,0), Quaternion.identity);
 				tmp.transform.parent = parent;
 				tmp.rigidbody2D.velocity = new Vector2(0,ConstantsScript.VERTICAL_SPEED);
 				tmp.gameObject.name = "Obstacle_Part";
+
+				int sprite = Random.Range(0,3);
+				if (sprite == 0)
+					tmp.GetComponent<SpriteRenderer>().sprite = part1;
+				else if (sprite == 1)
+					tmp.GetComponent<SpriteRenderer>().sprite = part2;
+				else if (sprite == 2)
+					tmp.GetComponent<SpriteRenderer>().sprite = part3;
 			}
-			x++;
+			x+=2;
 		}
 	}
 }
