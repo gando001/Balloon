@@ -5,7 +5,8 @@ public class ConstantsScript : MonoBehaviour {
 
 	public static bool REAL_DEVICE = false;
 
-	public static int OFF_SCREEN;
+	public static int OFF_SCREEN_X;
+	public static int OFF_SCREEN_Y;
 
 	// game logic
 	public static bool GAMEOVER;
@@ -28,6 +29,8 @@ public class ConstantsScript : MonoBehaviour {
 
 	// background
 	public static float BUILDING_SPEED;
+	public static int WALLS;
+	public static float PLANE_SPEED;
 
 	// Use this for initialization
 	void Start () 
@@ -58,7 +61,9 @@ public class ConstantsScript : MonoBehaviour {
 
 		// background
 		BUILDING_SPEED = -0.1f; // how much to move the buildings
-
-		OFF_SCREEN = -12; // value to determine whether and object is no longer visible
+		WALLS = 11; // the number of walls per side
+		PLANE_SPEED = 1; // how much to move the planes
+		OFF_SCREEN_Y = -12; // value to determine whether an object is no longer visible vertically
+		OFF_SCREEN_X = 25; // value to determine whether an object is no longer visible horizontally
 	}
 }

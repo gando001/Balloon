@@ -94,6 +94,9 @@ public class GameScript : MonoBehaviour {
 		// show the balloon
 		balloon.SetActive(true);
 
+		// (re)centre the balloon
+		balloon.GetComponent<BalloonScript>().resetBalloon();
+
 		// hide the start message
 		started.gameObject.SetActive(false);
 
@@ -133,21 +136,20 @@ public class GameScript : MonoBehaviour {
 	void createWalls()
 	{
 		Transform parent = GameObject.Find("Foreground").transform;
-		float x = (float)parent.position.x;
+		float x = (float)parent.position.x-0.5f;
 		float y = (float)parent.position.y;
-		
-		int cur_x = 0;
+
 		int cur_y = 0;
 		while (cur_y < 19)
 		{
 			// create each side of the wall
 			// left
-			GameObject tmp = (GameObject)Instantiate(wall, new Vector3(cur_x+x,cur_y+y,-2), Quaternion.identity);
+			GameObject tmp = (GameObject)Instantiate(wall, new Vector3(x,cur_y+y,-2), Quaternion.identity);
 			tmp.gameObject.name = "Wall";
 			tmp.transform.parent = parent;
 
 			// right
-			tmp = (GameObject)Instantiate(wall, new Vector3(-(cur_x+x),cur_y+y,-2), Quaternion.identity);
+			tmp = (GameObject)Instantiate(wall, new Vector3(-x,cur_y+y,-2), Quaternion.identity);
 			tmp.gameObject.name = "Wall";
 			tmp.transform.parent = parent;
 			tmp.GetComponent<SpriteRenderer>().sprite = wall_right;

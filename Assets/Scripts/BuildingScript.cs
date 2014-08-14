@@ -3,9 +3,11 @@ using System.Collections;
 
 public class BuildingScript : MonoBehaviour {
 
+	private Vector3 postion;
+
 	// Use this for initialization
 	void Start () {
-
+		postion = new Vector3(0,1.4f,2);
 	}
 
 	void Update()
@@ -17,16 +19,15 @@ public class BuildingScript : MonoBehaviour {
 			else 
 			{
 				// reset the position for a new game
-				transform.position = new Vector3(0,1.4f,2);
+				transform.position = postion;
 				rigidbody2D.velocity = new Vector2(0, 0);
 			}
 		}
 
 		// stop moving the buildings when it goes off screen
-		if (transform.position.y < ConstantsScript.OFF_SCREEN)
+		if (transform.position.y < ConstantsScript.OFF_SCREEN_Y)
 		{
 			rigidbody2D.velocity = new Vector2(0, 0);
 		}
-
 	}
 }

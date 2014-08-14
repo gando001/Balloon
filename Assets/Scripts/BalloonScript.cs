@@ -3,9 +3,11 @@ using System.Collections;
 
 public class BalloonScript : MonoBehaviour {
 
+	private float x;
+
 	// Use this for initialization
 	void Start () {
-	
+		x = transform.position.x; // store the starting x location
 	}
 	
 	// Update is called once per frame
@@ -40,5 +42,11 @@ public class BalloonScript : MonoBehaviour {
 
 			// pop the balloon
 		}
+	}
+
+	public void resetBalloon()
+	{
+		// centre the balloon
+		transform.position = new Vector3(x, transform.position.y, transform.position.z);
 	}
 }

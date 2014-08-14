@@ -52,7 +52,7 @@ public class ObstacleScript : MonoBehaviour {
 	void generateParts()
 	{	
 		// the index of the gap
-		int gap = Random.Range(2,ConstantsScript.OBSTACLE_PARTS-1);
+		int gap = Random.Range(0,ConstantsScript.OBSTACLE_PARTS);
 		float x = this.transform.parent.position.x+1;
 
 		for (int i=0; i<ConstantsScript.OBSTACLE_PARTS; i++)
