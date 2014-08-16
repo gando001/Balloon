@@ -5,6 +5,7 @@ public class ObstacleScript : MonoBehaviour {
 
 	public GameObject part;
 	public Sprite part1, part2, part3;
+	public AudioClip sound;
 
 	private string nme;
 	private Transform parent;
@@ -45,19 +46,31 @@ public class ObstacleScript : MonoBehaviour {
 		{
 			ConstantsScript.SCORE++;
 			passed = true; // set a flag to only count the score once
+			audio.PlayOneShot(sound);
 		}
 	}
 	
 	// generate the obstacle parts
 	void generateParts()
 	{	
-		// the index of the gap
-		int gap = Random.Range(0,ConstantsScript.OBSTACLE_PARTS);
-		float x = this.transform.parent.position.x+1;
+		// how many gaps
+		int num = Random.Range(ConstantsScript.MIN_OBSTACLE_GAP, ConstantsScript.MAX_OBSTACLE_GAP+1);
+		int gap1 = Random.Range(0,ConstantsScript.OBSTACLE_PARTS);
+		int gap2 = -1;
+		int gap3 = -1;
+		if (num == 2)
+			gap2 = Random.Range(0,ConstantsScript.OBSTACLE_PARTS);
+		else if (num == 3)
+		{
+			gap2 = Random.Range(0,ConstantsScript.OBSTACLE_PARTS);
+			gap3 = Random.Range(0,ConstantsScript.OBSTACLE_PARTS);
+		}
 
+		// create the obstacles
+		float x = this.transform.parent.position.x+1;
 		for (int i=0; i<ConstantsScript.OBSTACLE_PARTS; i++)
 		{
-			if (gap != i)// && gap != (i+1) && gap != (i-1))
+			if (gap1 != i && gap2 != i && gap3 != i)
 			{
 				// create each obstacle part
 				GameObject tmp = (GameObject)Instantiate(part, new Vector3(x,parent.transform.position.y,0), Quaternion.identity);

@@ -39,8 +39,6 @@ public class BalloonScript : MonoBehaviour {
 		if (otherCollider.gameObject.name == "Obstacle_Part" || otherCollider.gameObject.name == "Wall")
 		{	
 			ConstantsScript.GAMEOVER = true;
-
-			// pop the balloon
 		}
 	}
 

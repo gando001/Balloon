@@ -12,6 +12,9 @@ public class GameScript : MonoBehaviour {
 	public TextMesh score_text_shadow;
 	public Sprite wall_right;
 
+	// sounds
+	public AudioClip balloon_pop;
+
 	private bool generateObstacle;
 	private int updateCounter;
 	private bool levelIncreased;
@@ -61,6 +64,9 @@ public class GameScript : MonoBehaviour {
 				// increase the difficulty by reducing the range value
 				ConstantsScript.RANGE = Mathf.Max((ConstantsScript.RANGE-ConstantsScript.DIFFICULTY), ConstantsScript.MIN_RANGE);
 				levelIncreased = true; // only increase the level once
+
+				// increase the vertical speed of the obstacles
+				ConstantsScript.VERTICAL_SPEED = Mathf.Max((ConstantsScript.VERTICAL_SPEED-ConstantsScript.DELTA_SPEED), ConstantsScript.MAX_SPEED);
 			}
 			else if (ConstantsScript.SCORE > 0 && ConstantsScript.SCORE % ConstantsScript.DIFFICULTY_LEVEL != 0)
 				levelIncreased = false;
@@ -80,6 +86,18 @@ public class GameScript : MonoBehaviour {
 					startGame();
 			}
 		}
+
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			// user pressed the go back button
+			Application.Quit();
+		}
+
+		/*if (!ConstantsScript.REAL_DEVICE && Input.GetKeyDown("space"))
+		{
+			print ("Screenshot");
+			Application.CaptureScreenshot("/Users/Kunals-iMac/Dropbox/Apps/Android/SIKK Balloon/Market Assets/Tablet/screenshot.png");
+		}*/
 	}
 	
 	void GenerateNewObstacle()
@@ -97,6 +115,9 @@ public class GameScript : MonoBehaviour {
 		// (re)centre the balloon
 		balloon.GetComponent<BalloonScript>().resetBalloon();
 
+		// show the HUD
+		score.gameObject.SetActive(true);
+
 		// hide the start message
 		started.gameObject.SetActive(false);
 
@@ -107,6 +128,9 @@ public class GameScript : MonoBehaviour {
 
 	void resetGame()
 	{
+		// pop the balloon
+		audio.PlayOneShot(balloon_pop);
+
 		score_text.text = "score: "+ConstantsScript.SCORE;
 		score_text_shadow.text = "score: "+ConstantsScript.SCORE;
 
@@ -120,6 +144,9 @@ public class GameScript : MonoBehaviour {
 		
 		// hide the balloon
 		balloon.SetActive(false);
+
+		// hide the HUD
+		score.gameObject.SetActive(false);
 
 		// show the start message
 		started.gameObject.SetActive(true);
@@ -153,6 +180,7 @@ public class GameScript : MonoBehaviour {
 			tmp.gameObject.name = "Wall";
 			tmp.transform.parent = parent;
 			tmp.GetComponent<SpriteRenderer>().sprite = wall_right;
+			tmp.GetComponent<BoxCollider2D>().center = new Vector2(-tmp.GetComponent<BoxCollider2D>().center.x, tmp.GetComponent<BoxCollider2D>().center.y); // reverse the collider x co-ordinate
 
 			cur_y++;
 		}

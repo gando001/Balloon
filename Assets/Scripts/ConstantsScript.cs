@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ConstantsScript : MonoBehaviour {
 
-	public static bool REAL_DEVICE = false;
+	public static bool REAL_DEVICE = true;
 
 	public static int OFF_SCREEN_X;
 	public static int OFF_SCREEN_Y;
@@ -18,6 +18,8 @@ public class ConstantsScript : MonoBehaviour {
 
 	// obstacles
 	public static float VERTICAL_SPEED;
+	public static float DELTA_SPEED;
+	public static float MAX_SPEED;
 	public static int MAX_RANGE;
 	public static int RANGE;
 	public static int MIN_RANGE;
@@ -26,6 +28,8 @@ public class ConstantsScript : MonoBehaviour {
 	public static int DIFFICULTY;
 	public static int OBSTACLE_PARTS;
 	public static int STARTING_Y;
+	public static int MIN_OBSTACLE_GAP;
+	public static int MAX_OBSTACLE_GAP;
 
 	// background
 	public static float BUILDING_SPEED;
@@ -46,10 +50,12 @@ public class ConstantsScript : MonoBehaviour {
 		SCORE = 0;
 		
 		// user input
-		INPUT_SENSITIVITY = 5f;
+		INPUT_SENSITIVITY = 7.5f;
 		
 		// obstacles
-		VERTICAL_SPEED = -5;
+		VERTICAL_SPEED = -4f;
+		DELTA_SPEED = 0.25f; // how much to increase the obstable vertical speed by
+		MAX_SPEED = -5f; // the obstacles will not go faster than this
 		MAX_RANGE = 170;
 		RANGE = MAX_RANGE;
 		MIN_RANGE = 50;
@@ -58,6 +64,8 @@ public class ConstantsScript : MonoBehaviour {
 		DIFFICULTY = 15; // how much to reduce the obstacle range by
 		OBSTACLE_PARTS = 12;
 		STARTING_Y = 18; // y value where the top wall is
+		MIN_OBSTACLE_GAP = 1; // the minimum number of gaps in the obstacle
+		MAX_OBSTACLE_GAP = 3; // the maximum number of gaps in the obstacle
 
 		// background
 		BUILDING_SPEED = -0.1f; // how much to move the buildings

@@ -7,7 +7,7 @@ public class PlaneScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		postion = new Vector3(-13,6,2);
+		postion = transform.position;
 	}
 	
 	// Update is called once per frame

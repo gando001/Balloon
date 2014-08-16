@@ -7,7 +7,7 @@ public class BuildingScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		postion = new Vector3(0,1.4f,2);
+		postion = transform.position;
 	}
 
 	void Update()

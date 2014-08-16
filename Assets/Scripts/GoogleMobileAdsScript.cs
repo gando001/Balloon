@@ -13,7 +13,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
 		#if UNITY_EDITOR
 		string adUnitId = "unused";
 		#elif UNITY_ANDROID
-		string adUnitId = "ca-app-pub-6634653121418342/2036883916";
+		string adUnitId = "ca-app-pub-6634653121418342/6889435511";
 		#elif UNITY_IPHONE
 		string adUnitId = "INSERT_IOS_BANNER_AD_UNIT_ID_HERE";
 		#else
@@ -43,7 +43,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
     private AdRequest createAdRequest()
     {
         return new AdRequest.Builder()
-				.AddTestDevice("FE28D26C6EC35DC2E2F340CE4ECE7165") // remove this for real ads
+				//.AddTestDevice("FE28D26C6EC35DC2E2F340CE4ECE7165") // remove this for real ads
 				.AddKeyword("game")
                 .TagForChildDirectedTreatment(true)
                 .Build();
