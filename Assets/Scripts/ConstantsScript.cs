@@ -50,7 +50,7 @@ public class ConstantsScript : MonoBehaviour {
 		SCORE = 0;
 		
 		// user input
-		INPUT_SENSITIVITY = 7.5f;
+		INPUT_SENSITIVITY = 3.5f;
 		
 		// obstacles
 		VERTICAL_SPEED = -4f;

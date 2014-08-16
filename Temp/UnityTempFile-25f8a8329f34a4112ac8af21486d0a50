@@ -2,8 +2,7 @@
 -target:library
 -nowarn:0169
 -out:'Temp/Assembly-CSharp.dll'
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll'
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll'
+-r:'/Applications/Unity/Unity.app/Contents/PlaybackEngines/AndroidPlayer/Managed/UnityEngine.dll'
 -define:UNITY_ANDROID
 -define:ENABLE_MICROPHONE
 -define:ENABLE_TEXTUREID_MAP
@@ -31,9 +30,7 @@
 -define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
 -define:UNITY_4_3_4
 -define:UNITY_4_3
--define:ENABLE_PROFILER
--define:UNITY_EDITOR
--define:UNITY_EDITOR_OSX
+-define:Control
 'Assets/GoogleMobileAds/Api/AdFailedToLoadEventArgs.cs'
 'Assets/GoogleMobileAds/Api/AdPosition.cs'
 'Assets/GoogleMobileAds/Api/AdRequest.cs'
