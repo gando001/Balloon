@@ -18,8 +18,6 @@ public class ConstantsScript : MonoBehaviour {
 
 	// obstacles
 	public static float VERTICAL_SPEED;
-	public static float DELTA_SPEED;
-	public static float MAX_SPEED;
 	public static int MAX_RANGE;
 	public static int RANGE;
 	public static int MIN_RANGE;
@@ -35,6 +33,9 @@ public class ConstantsScript : MonoBehaviour {
 	public static float BUILDING_SPEED;
 	public static int WALLS;
 	public static float PLANE_SPEED;
+
+	// best score
+	public static string BEST = "BEST";
 
 	// Use this for initialization
 	void Start () 
@@ -53,9 +54,7 @@ public class ConstantsScript : MonoBehaviour {
 		INPUT_SENSITIVITY = 3.5f;
 		
 		// obstacles
-		VERTICAL_SPEED = -4f;
-		DELTA_SPEED = 0.25f; // how much to increase the obstable vertical speed by
-		MAX_SPEED = -5f; // the obstacles will not go faster than this
+		VERTICAL_SPEED = -5f;
 		MAX_RANGE = 170;
 		RANGE = MAX_RANGE;
 		MIN_RANGE = 50;

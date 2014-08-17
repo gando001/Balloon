@@ -11,6 +11,7 @@ public class GameScript : MonoBehaviour {
 	public TextMesh score_text;
 	public TextMesh score_text_shadow;
 	public Sprite wall_right;
+	public TextMesh best_score;
 
 	// sounds
 	public AudioClip balloon_pop;
@@ -64,9 +65,6 @@ public class GameScript : MonoBehaviour {
 				// increase the difficulty by reducing the range value
 				ConstantsScript.RANGE = Mathf.Max((ConstantsScript.RANGE-ConstantsScript.DIFFICULTY), ConstantsScript.MIN_RANGE);
 				levelIncreased = true; // only increase the level once
-
-				// increase the vertical speed of the obstacles
-				ConstantsScript.VERTICAL_SPEED = Mathf.Max((ConstantsScript.VERTICAL_SPEED-ConstantsScript.DELTA_SPEED), ConstantsScript.MAX_SPEED);
 			}
 			else if (ConstantsScript.SCORE > 0 && ConstantsScript.SCORE % ConstantsScript.DIFFICULTY_LEVEL != 0)
 				levelIncreased = false;
@@ -92,6 +90,16 @@ public class GameScript : MonoBehaviour {
 			// user pressed the go back button
 			Application.Quit();
 		}
+
+		// check for a new best score
+		if (ConstantsScript.SCORE > PlayerPrefs.GetInt(ConstantsScript.BEST))
+			PlayerPrefs.SetInt(ConstantsScript.BEST, ConstantsScript.SCORE);
+
+		// display/update the best score
+		if (PlayerPrefs.HasKey(ConstantsScript.BEST))
+			best_score.text = "best: "+PlayerPrefs.GetInt(ConstantsScript.BEST);
+		else
+			best_score.text = "best: 0";
 
 		/*if (!ConstantsScript.REAL_DEVICE && Input.GetKeyDown("space"))
 		{
@@ -131,6 +139,7 @@ public class GameScript : MonoBehaviour {
 		// pop the balloon
 		audio.PlayOneShot(balloon_pop);
 
+		// display the score to the user
 		score_text.text = "score: "+ConstantsScript.SCORE;
 		score_text_shadow.text = "score: "+ConstantsScript.SCORE;
 
